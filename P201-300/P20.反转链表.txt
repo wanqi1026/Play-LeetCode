@@ -1,0 +1,22 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* reverseList(struct ListNode* head) {
+    struct ListNode* newHead = (struct ListNode*)malloc(sizeof(struct ListNode));
+    newHead->next = NULL;
+    struct ListNode* p = newHead;
+    while(head!=NULL){
+        struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode));
+        temp->val = head->val;
+        temp->next = p->next;
+        p->next = temp;
+
+        head = head->next;
+    }
+
+    return newHead->next;
+}
