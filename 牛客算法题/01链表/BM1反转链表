@@ -1,0 +1,33 @@
+/**
+ * struct ListNode {
+ *	int val;
+ *	struct ListNode *next;
+ * };
+ */
+/**
+ * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+ *
+ * 
+ * @param head ListNode类 
+ * @return ListNode类
+ */
+#include <stdlib.h>
+struct ListNode* ReverseList(struct ListNode* head ) {
+    // write code here
+
+    if(head == NULL) return NULL;
+
+    struct ListNode* newHead = (struct ListNode*)malloc(sizeof(struct ListNode));
+    newHead->next = NULL;
+    struct ListNode* p = head;
+
+    while(p != NULL){
+        struct ListNode* temp = (struct ListNode*)malloc(sizeof(struct ListNode));
+        temp->val = p->val;
+        temp->next = newHead->next;
+        newHead->next = temp;
+        p = p->next;
+    }
+
+    return newHead->next;
+}
