@@ -1,0 +1,27 @@
+/**
+ * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+ *
+ * 旋转数组
+ * @param n int整型 数组长度
+ * @param m int整型 右移距离
+ * @param a int整型一维数组 给定数组
+ * @param aLen int a数组长度
+ * @return int整型一维数组
+ * @return int* returnSize 返回数组行数
+ */
+int* solve(int n, int m, int* a, int aLen, int* returnSize ) {
+    // write code here
+    m = m % n;
+    *returnSize = aLen;
+    int last;
+    for(int i=0; i<m; i++){
+        last=a[aLen-1];  //保留最后一个元素
+        //从倒数第二个开始，依次把元素赋给下一个，相等于除了最后一个元素，整体右移
+        for(int j=aLen-1; j>0; j--){
+            a[j] = a[j-1];
+        }
+        a[0] = last;     //将原数组最后一个元素赋值给首位
+    }
+
+    return a;
+}
